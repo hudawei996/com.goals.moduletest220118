@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="Gradle: androidx.core:core:1.8.0-alpha02@aar">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/.gradle/wrapper/dists/gradle-6.7.1-all/2moa8rlfac5eqlcfgk98k0deb/gradle-6.7.1/caches/transforms-2/files-2.1/4ba6964016968cf6dc489b8144c74822/core-1.8.0-alpha02/annotations.zip!/" />
+    </ANNOTATIONS>
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/wrapper/dists/gradle-6.7.1-all/2moa8rlfac5eqlcfgk98k0deb/gradle-6.7.1/caches/transforms-2/files-2.1/4ba6964016968cf6dc489b8144c74822/core-1.8.0-alpha02/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/wrapper/dists/gradle-6.7.1-all/2moa8rlfac5eqlcfgk98k0deb/gradle-6.7.1/caches/transforms-2/files-2.1/4ba6964016968cf6dc489b8144c74822/core-1.8.0-alpha02/res" />
+      <root url="file://$USER_HOME$/.gradle/wrapper/dists/gradle-6.7.1-all/2moa8rlfac5eqlcfgk98k0deb/gradle-6.7.1/caches/transforms-2/files-2.1/4ba6964016968cf6dc489b8144c74822/core-1.8.0-alpha02/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/wrapper/dists/gradle-6.7.1-all/2moa8rlfac5eqlcfgk98k0deb/gradle-6.7.1/caches/modules-2/files-2.1/androidx.core/core/1.8.0-alpha02/b4f91a1aae223db47c0c5a0eeee40fd58a37b095/core-1.8.0-alpha02-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

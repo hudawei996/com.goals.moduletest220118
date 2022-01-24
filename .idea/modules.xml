@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ModuleTest220118.iml" filepath="$PROJECT_DIR$/.idea/modules/ModuleTest220118.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/ModuleTest220118.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/ModuleTest220118.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/arouter-annotations/ModuleTest220118.arouter-annotations.iml" filepath="$PROJECT_DIR$/.idea/modules/arouter-annotations/ModuleTest220118.arouter-annotations.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/ModuleTest220118.commonlib.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/ModuleTest220118.commonlib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/compiler/ModuleTest220118.compiler.iml" filepath="$PROJECT_DIR$/.idea/modules/compiler/ModuleTest220118.compiler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/loginmodule/ModuleTest220118.loginmodule.iml" filepath="$PROJECT_DIR$/.idea/modules/loginmodule/ModuleTest220118.loginmodule.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/personal/ModuleTest220118.personalmodule.iml" filepath="$PROJECT_DIR$/.idea/modules/personal/ModuleTest220118.personalmodule.iml" />
+    </modules>
+  </component>
+</project>

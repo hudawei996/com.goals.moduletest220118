@@ -1,0 +1,116 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+apply plugin: 'kotlin-android'
+
+println("goals --> hello app1")
+println "goals --> hello app2"
+
+//缓存  提升性能 不用每次去找这些参数
+def androidConfig = rootProject.ext.androidConfig
+def dependenciesConfig = rootProject.ext.dependenciesConfig
+
+android {
+//    compileSdk androidConfig.compileSdkVersion
+    compileSdkVersion androidConfig.compileSdkVersion
+
+    defaultConfig {
+        applicationId androidConfig.applicationId
+//        minSdk androidConfig.minSdkVersion
+        minSdkVersion androidConfig.minSdkVersion
+//        targetSdk androidConfig.targetSdkVersion
+        targetSdkVersion androidConfig.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        //让我的Java代码也可以用
+        //给Java代码暴露，标记，正式环境 和 测试环境 的标记
+        //组件化 和 集成化 的时候需要
+        buildConfigField("boolean","isRelease",String.valueOf(isRelease))
+
+        //往Java工程传参,只有这种方法可以传，其他方式都不行
+        //可以动态的传递，app信息改变后的参数，比如app改成了app2,或者包名修改了等信息传递
+        //这个参数传递，必须写在defaultConfig节点下
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [
+                        moduleName:project.getName(),
+                        packageNameForAPT:packageNameForAPT,
+                        student:'hello ni hao student javapoet'
+                ]
+            }
+        }
+
+    }
+
+    buildTypes {
+
+        debug{
+            buildConfigField("String","debug","\"${url.debug}\"")
+        }
+
+        release {
+            buildConfigField("String","release","\"${url.release}\"")
+
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        viewBinding true
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.annotation:annotation:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
+
+    /*implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'*/
+
+    dependenciesConfig.each {
+        k,v -> implementation v
+    }
+
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3 '
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    //依赖Java Library
+//    implementation project(path: ':compiler')
+//    annotationProcessor project(path: ':compiler')
+    annotationProcessor project(':compiler')
+//    implementation project(path: ':arouter-annotations')
+    implementation project(':arouter-annotations')
+
+    //依赖Android Library公共组件库
+    implementation project(':commonlib')
+
+    //如果是集成化模式，做发布版本时。各个模块都不能独立运行了
+    //正式包的时候，主模块app，需要依赖所有子模块，只是子模块不互相依赖
+    if (isRelease){
+        implementation project(':loginmodule')
+        implementation project(':personalmodule')
+    }
+    implementation "androidx.core:core-ktx:+"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
+}

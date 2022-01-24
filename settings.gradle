@@ -1,0 +1,8 @@
+
+rootProject.name = "ModuleTest220118"
+include ':app'
+include ':loginmodule'
+include ':commonlib'
+include ':personalmodule'
+include ':compiler'
+include ':arouter-annotations'
