@@ -241,6 +241,11 @@ public class ARouterProcessor extends AbstractProcessor {
     }
 
 
+    /**
+     * 校验@ARouter注解的值，如果group未填写就从必填项path中截取数据
+     * @param bean
+     * @return
+     */
     private final boolean checkRouterPath(RouterBean bean){
         String group = bean.getGroup();// "app"   "login"   "personal"
         String path = bean.getPath();// "/app/MainActivity"  "/login/LoginJavaMainActivity"
@@ -261,6 +266,21 @@ public class ARouterProcessor extends AbstractProcessor {
             return false;
         }
 
+        //从第一个 / 到第二个 / 中间截取，如：/app/MainActivity 截取出 app,login,personal 作为Group
+        String finalGroup = path.substring(1,path.indexOf("/",1));
+        // app,order,personal == options
 
+        //@ARouter注解中的group有赋值情况
+        if (!ProcessorUtils.isEmpty(group) && !group.equals(options)){
+            //架构师定义规范，让开发者遵循
+            messager.printMessage(Diagnostic.Kind.ERROR,
+                    "@ARouter注解中的group值必须和子模块名一致");
+            return false;
+        }else {
+            bean.setGroup(finalGroup);
+        }
+
+        //如果真的返回true  RouterBean.group  xxx 赋值成功 没有问题
+        return true;
     }
 }
